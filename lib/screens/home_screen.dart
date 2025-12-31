@@ -78,40 +78,44 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(height: 24),
           // 選択した地域の詳細へボタン
           if (_selectedRegionId != null)
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    final selectedRegion = _regions.firstWhere(
-                      (region) => region.id == _selectedRegionId,
-                    );
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => RegionDetailScreen(
-                          region: selectedRegion,
+            Builder(
+              builder: (context) {
+                final selectedRegion = _regions.firstWhere(
+                  (region) => region.id == _selectedRegionId,
+                );
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => RegionDetailScreen(
+                              region: selectedRegion,
+                            ),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      child: Text(
+                        '${selectedRegion.name}の詳細を見る',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ),
-                  child: Text(
-                    '${_regions.firstWhere((r) => r.id == _selectedRegionId).name}の詳細を見る',
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
+                );
+              },
             ),
           const Spacer(),
           // フッター情報

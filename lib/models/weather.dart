@@ -20,9 +20,13 @@ class Weather {
 
   /// 地域IDで気象情報を取得
   static Weather? getWeatherByRegion(String regionId) {
-    return getAllWeatherData().firstWhere(
-      (weather) => weather.regionId == regionId,
-    );
+    try {
+      return getAllWeatherData().firstWhere(
+        (weather) => weather.regionId == regionId,
+      );
+    } catch (e) {
+      return null;
+    }
   }
 
   /// 全地域の気象情報モックデータ
