@@ -1,0 +1,34 @@
+name: yamagata_live_camera
+description: 山形県の各地域のライブカメラと積雪量、気温などの情報を表示・確認できるAndroid向けFlutterアプリ
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # UI関連
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  # アプリアイコンとスプラッシュ画面の設定（必要に応じて）
+  # assets:
+  #   - images/
+
+  # フォント設定（日本語対応）
+  # fonts:
+  #   - family: Noto Sans JP
+  #     fonts:
+  #       - asset: fonts/NotoSansJP-Regular.ttf
+  #       - asset: fonts/NotoSansJP-Bold.ttf
+  #         weight: 700
